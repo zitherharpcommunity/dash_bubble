@@ -1,6 +1,7 @@
 package dev.moaz.dash_bubble.src
 
 import android.app.Notification
+import android.app.PendingIntent
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.torrydo.floatingbubbleview.BubbleBehavior
@@ -102,11 +103,19 @@ class BubbleService : FloatingBubbleService() {
             R.drawable.default_bubble_icon
         )
 
+        val intent = Intent(Helpers.getApplicationName(this)).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(this, notificationId(), intent, PendingIntent.FLAG_IMMUTABLE)
+
         val notification = NotificationCompat.Builder(this, channelId())
             .setOngoing(true)
             .setContentTitle(notificationTitle)
             .setContentText(notificationOptions.body)
             .setSmallIcon(notificationIcon)
+            .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_MIN)
             .setCategory(Notification.CATEGORY_SERVICE)
             .build()

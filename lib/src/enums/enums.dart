@@ -1,1 +1,1 @@
-part 'close_behavior.dart';
+export 'close_behavior.dart';

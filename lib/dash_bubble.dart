@@ -1,14 +1,19 @@
 /// Dash Bubble is a flutter plugin that allows you to create a floating bubble on the screen.
 ///
-/// The plugin is currently only supports Android Platform and is built on top of [Floating-Bubble-View](https://github.com/TorryDo/Floating-Bubble-View) library.
+/// The plugin is currently only supports Android Platform and is built on top of 
+/// [Floating-Bubble-View](https://github.com/TorryDo/Floating-Bubble-View) library.
 ///
-/// To use this plugin, add `dash_bubble` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/) and import it in your dart code.
+/// To use this plugin, add `dash_bubble` as a 
+/// [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/) 
+/// and import it in your dart code.
 ///
 /// ```dart
 /// import 'package:dash_bubble/dash_bubble.dart';
 /// ```
 ///
-/// For more information on how to use this plugin, please refer to the [API Reference](https://pub.dev/documentation/dash_bubble/latest/) or the [Example Project](https://github.com/moazelsawaf/dash_bubble/tree/main/example)
+/// For more information on how to use this plugin, 
+/// please refer to the [API Reference](https://pub.dev/documentation/dash_bubble/latest/) 
+/// or the [Example Project](https://github.com/moazelsawaf/dash_bubble/tree/main/example)
 library dash_bubble;
 
 import 'src/method_channel/dash_bubble_platform_interface.dart';
@@ -87,23 +92,27 @@ class DashBubble {
   ///
   /// If the bubble is already running or the permission is not granted, this method will return `false`.
   ///
-  /// [options] is and optional parameter that allows you to customize the bubble.
+  /// [bubbleOptions] and [notificationOptions] 
+  /// is and optional parameter that allows you to customize the bubble.
   ///
   /// [onTap] is an optional callback that will be called when the bubble is tapped.
   ///
-  /// [onTapDown] is an optional callback that will be called when the bubble is tapped down (pressed), it will receive the `x` and `y` coordinates of the bubble when it is tapped down (pressed).
+  /// [onTapDown] is an optional callback that will be called when the bubble is tapped down (pressed), 
+  /// it will receive the `x` and `y` coordinates of the bubble when it is tapped down (pressed).
   ///
-  /// [onTapUp] is an optional callback that will be called when the bubble is tapped up (released), it will receive the `x` and `y` coordinates of the bubble when it is tapped up (released).
+  /// [onTapUp] is an optional callback that will be called when the bubble is tapped up (released), 
+  /// it will receive the `x` and `y` coordinates of the bubble when it is tapped up (released).
   ///
-  /// [onMove] is an optional callback that will be called when the bubble is moved, it will receive the new `x` and `y` coordinates of the bubble after it is moved.
+  /// [onMove] is an optional callback that will be called when the bubble is moved, 
+  /// it will receive the new `x` and `y` coordinates of the bubble after it is moved.
   ///
   Future<bool> startBubble({
     BubbleOptions? bubbleOptions,
     NotificationOptions? notificationOptions,
-    Function()? onTap,
-    Function(double x, double y)? onTapDown,
-    Function(double x, double y)? onTapUp,
-    Function(double x, double y)? onMove,
+    void Function()? onTap,
+    void Function(double x, double y)? onTapDown,
+    void Function(double x, double y)? onTapUp,
+    void Function(double x, double y)? onMove,
   }) {
     return DashBubblePlatform.instance.startBubble(
       bubbleOptions: bubbleOptions,
